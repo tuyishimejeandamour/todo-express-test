@@ -1,4 +1,4 @@
-let { checkEmail, createUser, editTodo, createTodo, deleteTodo, deleteUser } = require('../mongodb/db')
+let { checkEmail, createUser, editTodo, createTodo, deleteTodo, deleteUser } = require('../mongodb/services')
 let { getHashedPassword } = require('./function')
 
 async function registerUser(req, res) {
