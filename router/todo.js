@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 
 const { isAuthenticated } = require('../controllers/auth')
-const { getTodoAll } = require('../mongodb/db')
+const { getTodoAll } = require('../mongodb/services')
 const { addTodoUser, deleteTodoUser, editTodoUser } = require('../controllers/user')
 
 router.get('/', isAuthenticated, async(req, res) => {
