@@ -36,15 +36,14 @@ describe('create user', () => {
 
 
     // to fix later
-    // it('delete user ',async()=>{
-    //   const mockedId = 'a61e8f4a9df624e0b4ab246c8';
-    //     const response = await deleteUser(mockedId)
-    //     console.log('yooo', response)
-    //     expect(response).toEqual(mockedId)
-    // })
+    it('delete user ',async()=>{
+      const mockedId = '61e927360beb3087386c2b3a';
+      const deletedUser = await deleteUser(mockedId)
+      expect(deletedUser.ok).toEqual(1)
+    })
 
     it('should create todo', async () => {
-      const mockTODO = {id: '61e8f8f904023e223bc96a24', title: 'Wash shoes',dates:'20/1 10:59:00'};
+      const mockTODO = {id: '61e8ff7713e40732a442911a', title: 'Wash shoes',dates:'20/1 10:59:00'};
       await createTodo(mockTODO.id,mockTODO.title,mockTODO.dates);
       const {todo} = await User.findOne({_id: mockTODO.id});
       const  lastToDO = (todo[todo.length-1])
@@ -52,7 +51,7 @@ describe('create user', () => {
     });
 
     it('should edit todo', async () => {
-      const mockTODO = {user_id: '61e8f8f904023e223bc96a24', todo_id:'61e927dd1da0f21bdc8de85d', title: 'Wash dishes',dates:'20/1 10:59:00'};
+      const mockTODO = {user_id: '61e8ff7713e40732a442911a', todo_id:'61e93039cbadb4259b6660db', title: 'Wash dishes',dates:'20/1 10:59:00'};
       await editTodo(mockTODO.user_id,mockTODO.todo_id,mockTODO.title,mockTODO.dates);
       const {todo} = await User.findOne({_id: mockTODO.user_id});
       const  lastToDO = todo.findIndex(x=> x._id==mockTODO.todo_id)

@@ -35,9 +35,13 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     
     /* Gervais */
     async function deleteUser(id) {
-        User.deleteOne({_id: id}, function(err, obj) {
-            if (err) throw err;
+        const deletedUser = await User.deleteOne({_id: id}, function(err, obj) {
+           
         })
+        if(deletedUser){
+            return deletedUser
+        } else 
+             if (err) throw err;
     }
     module.exports.deleteUser = deleteUser
 
