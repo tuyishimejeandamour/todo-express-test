@@ -8,7 +8,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
         await User.create(obj)
     }
     module.exports.createUser = createUser
-
+    /*Patrick*/
     async function checkEmail(email) {
         let users = await User.findOne({email: email})
         if(users !== null) {
