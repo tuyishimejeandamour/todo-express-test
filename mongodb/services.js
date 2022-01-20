@@ -25,7 +25,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     /* Patrick */
     async function checkAuth(email, pass) {
         let users = await User.findOne({email: email})
-        if (email === users.email && pass === users.password) {
+        if (email === users?.email && pass === users?.password) {
             return true
         } else {
             return false
@@ -43,8 +43,8 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
 
     /* Patrick */
     async function getTodoAll(id) {
-        let users = await User.findOne({_id: id}).lean()
-        let db = users.todo
+        let users = await User.findOne({_id: id});
+        let db = users?.todo
         if (users !== null) {
             return db
         } else {
@@ -71,9 +71,9 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
         let users = await User.findOne({_id: id})
         let arr = users.todo
         arr = arr.filter(item => item._id != idTodo)
-        User.updateOne({_id: id}, { todo: arr }, function(err, obj) {
-            if (err) throw err;
-        })
+        const response = await User.updateOne({_id: id}, { todo: arr });
+        if(!response) return {success: false}
+        return {success: true};
     }
     module.exports.deleteTodo = deleteTodo
 

@@ -30,7 +30,6 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "@shelf/jest-mongodb": "^2.2.0",
     "jest": "^27.4.7"
   }
 }
