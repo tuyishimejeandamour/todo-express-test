@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 let { checkEmail, createUser, editTodo, createTodo, deleteTodo, deleteUser } = require('../../mongodb/services')
 
 
-describe('create user', () => {
+describe('SERVICES TESTS', () => {
   let db;
 
   beforeAll(async () => {
@@ -16,6 +16,7 @@ describe('create user', () => {
     });
     db = mongoose.connection;
   });
+
   afterAll(async () => {
     await db.close();
   });
