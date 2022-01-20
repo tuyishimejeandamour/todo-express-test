@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642658691865" clover="3.2.0">
-  <project timestamp="1642658691865" name="All files">
-    <metrics statements="54" coveredstatements="19" conditionals="16" coveredconditionals="0" methods="15" coveredmethods="2" elements="85" coveredelements="21" complexity="0" loc="54" ncloc="54" packages="2" files="3" classes="3"/>
+<coverage generated="1642659703905" clover="3.2.0">
+  <project timestamp="1642659703905" name="All files">
+    <metrics statements="54" coveredstatements="23" conditionals="16" coveredconditionals="1" methods="15" coveredmethods="3" elements="85" coveredelements="27" complexity="0" loc="54" ncloc="54" packages="2" files="3" classes="3"/>
     <package name="mongodb">
-      <metrics statements="52" coveredstatements="17" conditionals="16" coveredconditionals="0" methods="14" coveredmethods="1"/>
-      <file name="model.js" path="C:\Users\user\Documents\workspaces\DEV_OPS\testing\todo-express-test\mongodb\model.js">
+      <metrics statements="52" coveredstatements="21" conditionals="16" coveredconditionals="1" methods="14" coveredmethods="2"/>
+      <file name="model.js" path="/home/gervais/Documents/__projects/class/testing/todo-express-test/mongodb/model.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
       </file>
-      <file name="services.js" path="C:\Users\user\Documents\workspaces\DEV_OPS\testing\todo-express-test\mongodb\services.js">
-        <metrics statements="49" coveredstatements="14" conditionals="16" coveredconditionals="0" methods="14" coveredmethods="1"/>
+      <file name="services.js" path="/home/gervais/Documents/__projects/class/testing/todo-express-test/mongodb/services.js">
+        <metrics statements="49" coveredstatements="18" conditionals="16" coveredconditionals="1" methods="14" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -19,10 +19,10 @@
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
@@ -65,7 +65,7 @@
     </package>
     <package name="tests">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="sum.js" path="C:\Users\user\Documents\workspaces\DEV_OPS\testing\todo-express-test\tests\sum.js">
+      <file name="sum.js" path="/home/gervais/Documents/__projects/class/testing/todo-express-test/tests/sum.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>

@@ -21,10 +21,22 @@ describe('create user', () => {
   });
 
   
-    it('should insert a doc into collection', async () => {
+    it('should create user', async () => {
       const mockUser = {name: 'John Doe', email: 'doe@gmail.com',pass:'john'};
       await createUser(mockUser.name,mockUser.email,mockUser.pass);
       const insertedUser = await User.findOne({email: 'doe@gmail.com'});
       expect(insertedUser.name).toEqual(mockUser.name);
     });
+
+    it('should check user email ',async()=>{
+      const mockedEmail = 'doe@gmail.com';
+        const response = await checkEmail(mockedEmail)
+        expect(response).toEqual(mockedEmail)
+    })
+
+    
+
+
+
+
   });

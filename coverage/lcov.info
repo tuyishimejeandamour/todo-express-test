@@ -1,5 +1,5 @@
 TN:
-SF:mongodb\model.js
+SF:mongodb/model.js
 FNF:0
 FNH:0
 DA:1,1
@@ -11,7 +11,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:mongodb\services.js
+SF:mongodb/services.js
 FN:7,createUser
 FN:14,checkEmail
 FN:26,checkAuth
@@ -27,9 +27,9 @@ FN:81,editTodo
 FN:84,(anonymous_12)
 FN:87,(anonymous_13)
 FNF:14
-FNH:1
+FNH:2
 FNDA:1,createUser
-FNDA:0,checkEmail
+FNDA:1,checkEmail
 FNDA:0,checkAuth
 FNDA:0,deleteUser
 FNDA:0,(anonymous_4)
@@ -49,10 +49,10 @@ DA:4,1
 DA:8,1
 DA:9,1
 DA:11,1
-DA:15,0
-DA:16,0
-DA:17,0
-DA:18,0
+DA:15,1
+DA:16,1
+DA:17,1
+DA:18,1
 DA:20,0
 DA:23,1
 DA:27,0
@@ -92,8 +92,8 @@ DA:87,0
 DA:88,0
 DA:91,1
 LF:49
-LH:14
-BRDA:16,0,0,0
+LH:18
+BRDA:16,0,0,1
 BRDA:16,0,1,0
 BRDA:28,1,0,0
 BRDA:28,1,1,0
@@ -110,10 +110,10 @@ BRDA:75,6,1,0
 BRDA:88,7,0,0
 BRDA:88,7,1,0
 BRF:16
-BRH:0
+BRH:1
 end_of_record
 TN:
-SF:tests\sum.js
+SF:tests/sum.js
 FN:1,sum
 FNF:1
 FNH:1
