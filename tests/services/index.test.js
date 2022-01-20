@@ -75,6 +75,31 @@ describe('Test services', () => {
       const response = await checkAuth(mockUser.email, mockUser.password);
       expect(response).toBe(false);
     })
+
+    // to fix later
+    it('delete user ',async()=>{
+      const mockedId = '61e927360beb3087386c2b3a';
+      const deletedUser = await deleteUser(mockedId)
+      expect(deletedUser.ok).toEqual(1)
+    })
+
+    it('should create todo', async () => {
+      const mockTODO = {id: '61e8ff7713e40732a442911a', title: 'Wash shoes',dates:'20/1 10:59:00'};
+      await createTodo(mockTODO.id,mockTODO.title,mockTODO.dates);
+      const {todo} = await User.findOne({_id: mockTODO.id});
+      const  lastToDO = (todo[todo.length-1])
+      expect(lastToDO.title).toEqual(mockTODO.title);
+    });
+
+    it('should edit todo', async () => {
+      const mockTODO = {user_id: '61e8ff7713e40732a442911a', todo_id:'61e93039cbadb4259b6660db', title: 'Wash dishes',dates:'20/1 10:59:00'};
+      await editTodo(mockTODO.user_id,mockTODO.todo_id,mockTODO.title,mockTODO.dates);
+      const {todo} = await User.findOne({_id: mockTODO.user_id});
+      const  lastToDO = todo.findIndex(x=> x._id==mockTODO.todo_id)
+      expect(todo[lastToDO].title).toEqual(mockTODO.title);
+    });
+
+
     
     it('should get all user todos ', async() => {
      

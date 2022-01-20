@@ -35,9 +35,13 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     
     /* Gervais */
     async function deleteUser(id) {
-        User.deleteOne({_id: id}, function(err, obj) {
-            if (err) throw err;
+        const deletedUser = await User.deleteOne({_id: id}, function(err, obj) {
+           
         })
+        if(deletedUser){
+            return deletedUser
+        } else 
+             if (err) throw err;
     }
     module.exports.deleteUser = deleteUser
 
@@ -57,7 +61,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     async function createTodo(id, title, dates) {
         const time = moment(Date.now()).format('DD/MM HH:mm:ss')
         let users = await User.findOne({_id: id})
-        let todos = users.todo
+        let todos = users?.todo
         let obj = {_id: new ObjectID(), title: title, dueDate: dates, time: time}
         todos.push(obj)
         User.updateOne({_id: id}, {todo: todos}, function(err, obj) {
@@ -69,7 +73,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     /* Patrick */
     async function deleteTodo(id, idTodo) {
         let users = await User.findOne({_id: id})
-        let arr = users.todo
+        let arr = users?.todo
         arr = arr.filter(item => item._id != idTodo)
         const response = await User.updateOne({_id: id}, { todo: arr });
         if(!response) return {success: false}
@@ -80,7 +84,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     /* Gervais */
     async function editTodo(id, idTodo, title, dates) {
         let users = await User.findOne({_id: id})
-        let arr = users.todo
+        let arr = users?.todo
         let index = arr.findIndex(x => x._id == idTodo)
         arr[index].title = title
         arr[index].dueDate = dates
