@@ -14,7 +14,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     async function checkEmail(email) {
         let users = await User.findOne({email: email})
         if(users !== null) {
-            console.log(users.email)
+            // console.log(users.email)
             return users.email 
         } else {
             return false
