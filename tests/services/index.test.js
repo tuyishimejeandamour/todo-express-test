@@ -1,7 +1,6 @@
 
 const {MongoClient} = require('mongodb');
 const {User} = require('../../mongodb/model');
-// const jest = require('jest');
 const mongoose = require('mongoose');
 
 let { 
@@ -46,7 +45,7 @@ describe('Test services', () => {
       useUnifiedTopology: true
     });
     db = mongoose.connection;
-    
+    mongoose.connection.dropCollection('users');
   });
   afterAll(async () => {
     await db.close();
