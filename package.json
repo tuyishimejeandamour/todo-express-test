@@ -2,9 +2,9 @@
   "name": "todo-mongodb",
   "version": "1.0.0",
   "description": "learn express and mongodb",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon index.js",
     "kport": "fuser -k 3030/tcp",
     "test": "jest --coverage --testTimeout=30000"
   },
@@ -14,12 +14,12 @@
     "todo"
   ],
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "testEnvironment": "node"
   },
   "author": "zekais",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.25.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "crypto": "^1.0.1",
@@ -31,7 +31,8 @@
     "mongoose": "^5.13.3",
     "nodemon": "^2.0.12",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "supertest": "^6.2.2"
   },
   "devDependencies": {
     "jest": "^27.4.7"
