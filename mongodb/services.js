@@ -61,6 +61,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     async function createTodo(id, title, dates) {
         const time = moment(Date.now()).format('DD/MM HH:mm:ss')
         let users = await User.findOne({_id: id})
+        console.log("user... "+JSON.stringify(users))
         let todos = users?.todo
         let obj = {_id: new ObjectID(), title: title, dueDate: dates, time: time}
         todos.push(obj)

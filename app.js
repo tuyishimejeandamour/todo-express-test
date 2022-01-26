@@ -52,6 +52,7 @@ app.use(function(req, res, next) {
 app.use('/users', users)
 app.use('/todo', todos)
 
-app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`)
-  })
+module.exports = {
+  app: app,
+  PORT: PORT
+}

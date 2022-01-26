@@ -40,12 +40,12 @@ describe('Test services', () => {
   }
   
   beforeAll(async () => {
-    connection = await mongoose.connect('mongodb://127.0.0.1:27017/test', {
-      useNewUrlParser: true, 
+    await mongoose.connect('mongodb://127.0.0.1:27017/test', {
+      useNewUrlParser: true,
       useUnifiedTopology: true
     });
     db = mongoose.connection;
-    mongoose.connection.dropCollection('users');
+    // mongoose.connection.dropCollection('users');
   });
   afterAll(async () => {
     await db.close();
