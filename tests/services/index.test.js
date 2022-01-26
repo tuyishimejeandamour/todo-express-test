@@ -1,5 +1,4 @@
 
-const {MongoClient} = require('mongodb');
 const {User} = require('../../mongodb/model');
 const mongoose = require('mongoose');
 
@@ -42,7 +41,8 @@ describe('Test services', () => {
   beforeAll(async () => {
     await mongoose.connect('mongodb://127.0.0.1:27017/test', {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useFindAndModify: false
     });
     db = mongoose.connection;
     // mongoose.connection.dropCollection('users');

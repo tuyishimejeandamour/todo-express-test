@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "kport": "fuser -k 3030/tcp",
-    "test": "jest --coverage --testTimeout=30000"
+    "test": "jest --coverage --detectOpenHandles --testTimeout=30000"
   },
   "keywords": [
     "express",

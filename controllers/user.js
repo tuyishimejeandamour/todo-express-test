@@ -4,6 +4,12 @@ let { getHashedPassword } = require('./function')
 async function registerUser(req, res) {
     try {
         let {name, email, password, confirmPassword } = req.body
+        if(!name || !email || !password || !confirmPassword){
+            return res.render('register', {
+                message: 'Input Name, Email and Password!',
+                messageClass: 'alert-danger'
+            });
+        }
         if(name == '' || email == '' || password == '' || confirmPassword == '') {
             res.render('register', {
                 message: 'Input Name, Email and Password!',
@@ -43,6 +49,10 @@ async function registerUser(req, res) {
         }
     } catch(err) {
         console.log(err)
+        return res.render('register', {
+            message: 'Internal Server Error',
+            messageClass: 'alert-danger'
+        });
     }
 }
 
@@ -84,6 +94,7 @@ async function editTodoUser(req, res) {
 
 async function deleteUserAccount(req, res) {
     try {
+        if(!req.user) return res.status(400).send();
         let id = req.user.id
         let { resp } = req.body
         if (resp == 'yes') {
@@ -96,7 +107,8 @@ async function deleteUserAccount(req, res) {
             res.redirect('/todo')
         }
     } catch(error) {
-        console.log(error)
+        console.log(error);
+        return res.status(500).send()
     }
 }
 
