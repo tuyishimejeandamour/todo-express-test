@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const settings = require('../controllers/settings')
 
-function connectMongoDb() {
-    mongoose.connect(settings.dbURI, { 
+async function connectMongoDb() {
+   await mongoose.connect(settings.dbURI, { 
       useNewUrlParser: true, 
       useUnifiedTopology: true,
       useFindAndModify: false

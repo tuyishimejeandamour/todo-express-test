@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.25% </span>
+                <span class="strong">29.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/48</span>
+                <span class='fraction'>14/48</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/20</span>
+                <span class='fraction'>10/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.25% </span>
+                <span class="strong">29.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/48</span>
+                <span class='fraction'>14/48</span>
             </div>
         
             
@@ -170,38 +170,38 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -272,40 +272,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">let { checkEmail, createUser, editTodo, createTodo, deleteTodo, deleteUser } = require('../mongodb/services')
 let { getHashedPassword } = require('./function')
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >registerUser(</span>req, res) {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        let {name, email, password, confirmPassword } = <span class="cstat-no" title="statement not covered" >req.body</span>
-<span class="cstat-no" title="statement not covered" >        if(name == '' || email == '' || password == '' || confirmPassword == '') {</span>
+async function registerUser(req, res) {
+    try {
+        let {name, email, password, confirmPassword } = req.body
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(name == '' || email == '' || password == '' || confirmPassword == '') {
 <span class="cstat-no" title="statement not covered" >            res.render('register', {</span>
                 message: 'Input Name, Email and Password!',
                 messageClass: 'alert-danger'
             });
 <span class="cstat-no" title="statement not covered" >            return</span>
         }
-<span class="cstat-no" title="statement not covered" >        if(password.length &lt; 6 || confirmPassword &lt; 6) {</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(password.length &lt; 6 || confirmPassword &lt; 6) {
 <span class="cstat-no" title="statement not covered" >            res.render('register', {</span>
                 message: 'Password must be at least 6 characters',
                 messageClass: 'alert-danger'
             });
 <span class="cstat-no" title="statement not covered" >            return</span>
         }
-<span class="cstat-no" title="statement not covered" >        if(password === confirmPassword) {</span>
-            let checking = <span class="cstat-no" title="statement not covered" >await checkEmail(email)</span>
-<span class="cstat-no" title="statement not covered" >            if(checking) {</span>
+        if(password === confirmPassword) {
+            let checking = await checkEmail(email)
+            <span class="missing-if-branch" title="if path not taken" >I</span>if(checking) {
 <span class="cstat-no" title="statement not covered" >                res.render('register', {</span>
                     message: 'User already registered.',
                     messageClass: 'alert-danger'
                 })
 <span class="cstat-no" title="statement not covered" >                return</span>
             }
-            let hashedPassword = <span class="cstat-no" title="statement not covered" >getHashedPassword(password)</span>
-<span class="cstat-no" title="statement not covered" >            createUser(name, email, hashedPassword)</span>
-<span class="cstat-no" title="statement not covered" >            res.render('login', {</span>
+            let hashedPassword = getHashedPassword(password)
+            createUser(name, email, hashedPassword)
+            res.render('login', {
                 message: 'Registration Complete. Please login to continue.',
                 messageClass: 'alert-success'
             });
-<span class="cstat-no" title="statement not covered" >            return</span>
-        } else {
+            return
+        } else <span class="missing-if-branch" title="else path not taken" >E</span>{
 <span class="cstat-no" title="statement not covered" >            res.render('register', {</span>
                 message: 'Password does not match.',
                 messageClass: 'alert-danger'
@@ -379,7 +379,7 @@ module.exports = { registerUser, addTodoUser, deleteTodoUser, editTodoUser, dele
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed Jan 26 2022 08:13:21 GMT+0200 (Eastern European Standard Time)
+                at Wed Jan 26 2022 08:36:50 GMT+0200 (Eastern European Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
