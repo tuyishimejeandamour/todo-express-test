@@ -92,7 +92,8 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
         let users = await User.findOne({_id: id});
         if(!users) return false;
         let arr = users?.todo;
-        let index = arr.findIndex(x => x._id == idTodo);
+        const a = [{_id: "a"}];
+        let index = arr.findIndex(x => String(x._id) == String(idTodo));
         arr[index].title = title
         arr[index].dueDate = dates
         return User.findOneAndUpdate({_id: id}, { $set: {todo: arr} }, {new: true})

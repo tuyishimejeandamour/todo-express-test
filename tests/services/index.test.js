@@ -92,8 +92,8 @@ describe('Test services', () => {
       const mockTODO = {todo_id: user.todo[0]._id, title: 'Wash dishes',dates:'20/1 10:59:00'};
       await editTodo(user._id,mockTODO.todo_id,mockTODO.title,mockTODO.dates);
       user = await User.findOne({_id: user._id});
-      const  lastToDO = user.todo.findIndex(x=> x._id==mockTODO.todo_id);
-      expect(user.todo[lastToDO].title).toEqual(mockTODO.title);
+      const editedIndex = user.todo.findIndex(x=> String(x._id)==String(mockTODO.todo_id));
+      expect(user.todo[editedIndex].title).toEqual(mockTODO.title);
     });
 
     // to fix later
