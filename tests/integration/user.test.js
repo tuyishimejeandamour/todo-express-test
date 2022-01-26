@@ -1,9 +1,17 @@
 const { app } = require("../../app");
+const { connectMongoDb } = require("../../mongodb");
 const supertest = require("supertest");
+const mongoose = require("mongoose");
 
 describe('USER API INTEGRATION TESTS', () => {
   
-    //POST
+    beforeAll(()=> {
+        connectMongoDb();
+    });
+
+    afterAll(()=> {
+        mongoose.connection.close(true);
+    });
 
     it("POST /users/register", ()=> {
         supertest(app).post("/users/register")
@@ -20,18 +28,6 @@ describe('USER API INTEGRATION TESTS', () => {
             .expect('Content-Type', /text/)
             .expect(200);
     });
-
-
-
-    // it("PUT /users/register",()=>{
-    //     supertest(app).put("users/register")
-    //     .send({name:"Kalisa", email:"kal@gmail.com", password:"12345677", confirmPassword:"12345677"})
-    //     .set('Accept', 'applcation/json')
-    //     .expect('Content-Type', /text/)
-    //     .expect(200);
-    // }); 
-
-    //GET TESTS
 
     it("GET /register fail",()=>{
         supertest(app)

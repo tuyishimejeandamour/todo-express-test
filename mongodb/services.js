@@ -6,7 +6,8 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
 /* Done */
     async function createUser(name, email, pass) {
         let obj = {name: name, email: email, password: pass, todo: []}
-        await User.create(obj)
+        const user = new User(obj);
+        await user.save();
     }
     module.exports.createUser = createUser
 
@@ -60,13 +61,18 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
     /* Gervais */
     async function createTodo(id, title, dates) {
         const time = moment(Date.now()).format('DD/MM HH:mm:ss')
-        let users = await User.findOne({_id: id})
-        let todos = users?.todo
+        let users = await User.findOne({_id: id});
+        if(!users) return false;
+        let todos = users?.todo;
         let obj = {_id: new ObjectID(), title: title, dueDate: dates, time: time}
-        todos.push(obj)
-        User.updateOne({_id: id}, {todo: todos}, function(err, obj) {
-            if (err) throw err;
+        todos.push(obj);
+        return await User.updateOne({_id: id}, {todo: todos}, {new: true})
+        .then(update=> {
+            return true;
         })
+        .catch(e=> {
+            return false;
+        });
     }
     module.exports.createTodo = createTodo
 
@@ -83,13 +89,14 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
 
     /* Gervais */
     async function editTodo(id, idTodo, title, dates) {
-        let users = await User.findOne({_id: id})
-        let arr = users?.todo
-        let index = arr.findIndex(x => x._id == idTodo)
+        let users = await User.findOne({_id: id});
+        if(!users) return false;
+        let arr = users?.todo;
+        let index = arr.findIndex(x => x._id == idTodo);
         arr[index].title = title
         arr[index].dueDate = dates
-        User.updateOne({_id: id}, { todo: arr }, function(err, obj) {
-            if (err) throw err;
-        })
+        return User.findOneAndUpdate({_id: id}, { $set: {todo: arr} }, {new: true})
+        .then(updated=> (true))
+        .catch(e=> (false));
     }
     module.exports.editTodo = editTodo

@@ -54,7 +54,7 @@ describe('Test services', () => {
   
     it('should create user', async () => {
       await createUser(mockUser.name,mockUser.email,mockUser.pass);
-      const insertedUser = await User.findOne({email: 'doe@gmail.com'});
+      const insertedUser = await User.findOne({email: mockUser.email});
       expect(insertedUser.name).toEqual(mockUser.name);
     });
 
@@ -75,29 +75,33 @@ describe('Test services', () => {
       expect(response).toBe(false);
     })
 
+    it('should create todo', async () => {
+      const mockTODO = {title: 'Wash shoes',dates:'20/1 10:59:00'};
+      let user = await User.findOne();
+      expect(typeof user?.email).toBe("string");
+      await createTodo(user._id,mockTODO.title,mockTODO.dates);
+      user = await User.findOne({_id: user._id});
+      const  lastToDO = (user.todo[user.todo.length-1]);
+      expect(lastToDO.title).toEqual(mockTODO.title);
+    });
+
+    it('should edit todo', async () => {
+      let user = await User.findOne();
+      expect(typeof user?.email).toBe("string");
+      expect(user.todo.length > 0).toBe(true);
+      const mockTODO = {todo_id: user.todo[0]._id, title: 'Wash dishes',dates:'20/1 10:59:00'};
+      await editTodo(user._id,mockTODO.todo_id,mockTODO.title,mockTODO.dates);
+      user = await User.findOne({_id: user._id});
+      const  lastToDO = user.todo.findIndex(x=> x._id==mockTODO.todo_id);
+      expect(user.todo[lastToDO].title).toEqual(mockTODO.title);
+    });
+
     // to fix later
     it('delete user ',async()=>{
       const mockedId = '61e927360beb3087386c2b3a';
       const deletedUser = await deleteUser(mockedId)
       expect(deletedUser.ok).toEqual(1)
     })
-
-    it('should create todo', async () => {
-      const mockTODO = {id: '61e8ff7713e40732a442911a', title: 'Wash shoes',dates:'20/1 10:59:00'};
-      await createTodo(mockTODO.id,mockTODO.title,mockTODO.dates);
-      const {todo} = await User.findOne({_id: mockTODO.id});
-      const  lastToDO = (todo[todo.length-1])
-      expect(lastToDO.title).toEqual(mockTODO.title);
-    });
-
-    it('should edit todo', async () => {
-      const mockTODO = {user_id: '61e8ff7713e40732a442911a', todo_id:'61e93039cbadb4259b6660db', title: 'Wash dishes',dates:'20/1 10:59:00'};
-      await editTodo(mockTODO.user_id,mockTODO.todo_id,mockTODO.title,mockTODO.dates);
-      const {todo} = await User.findOne({_id: mockTODO.user_id});
-      const  lastToDO = todo.findIndex(x=> x._id==mockTODO.todo_id)
-      expect(todo[lastToDO].title).toEqual(mockTODO.title);
-    });
-
 
     
     it('should get all user todos ', async() => {
