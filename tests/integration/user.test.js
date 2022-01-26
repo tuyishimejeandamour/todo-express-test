@@ -21,25 +21,25 @@ describe('USER API INTEGRATION TESTS', () => {
             .expect(200);
     });
 
-    it("POST /delete", async ()=> {
-        await supertest(app).post("/delete")
-            .send({ name: "John", email: "Doe", password: "1234567", confirmPassword: "1234567" })
-            .set('Accept', 'application/json')
+    it("POST /users/delete", async ()=> {
+        await supertest(app).get("/users/delete")
+            .set('Accept', 'text/html')
             .expect('Content-Type', /text/)
             .expect(200);
     });
 
-    it("GET /register fail", async()=>{
+    it("POST /register fail", async()=>{
         await supertest(app)
-            .get('/users')
+            .post('/users/register')
             .set('Accept', 'applcation/json')
             .expect('Content-Type', /text/)
-            .expect(200);
+            .expect(200)
+            .expect(new RegExp("Input Name, Email and Password", "ig"))
     }); 
 
     it("GET /login", async()=>{
         await supertest(app)
-            .get('/users')
+            .get('/users/login')
             .set('Accept', 'applcation/json')
             .expect('Content-Type', /text/)
             .expect(200);
@@ -47,18 +47,17 @@ describe('USER API INTEGRATION TESTS', () => {
 
     it("GET /logout", async()=>{
         await supertest(app)
-            .get('/users')
-            .set('Accept', 'applcation/json')
+            .get('/users/logout')
+            .set('Accept', 'text/html')
             .expect('Content-Type', /text/)
-            .expect(200);
+            .expect(302);
     }); 
 
-    it("DELETE /delete", async()=>{
+    it("DELETE /users/delete FAIL", async()=>{
         await supertest(app)
-            .delete('/users')
+            .post('/users/delete')
             .set('Accept', 'application/json')
-            .expect('Content-Type',/text/)
-            .expect(200);
+            .expect(400);
     })
     
     

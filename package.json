@@ -14,7 +14,7 @@
     "todo"
   ],
   "jest": {
-    "verbose": false,
+    "verbose": true,
     "testEnvironment": "node"
   },
   "author": "zekais",
