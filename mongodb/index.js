@@ -4,7 +4,8 @@ const settings = require('../controllers/settings')
 function connectMongoDb() {
     mongoose.connect(settings.dbURI, { 
       useNewUrlParser: true, 
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useFindAndModify: false
     });
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
