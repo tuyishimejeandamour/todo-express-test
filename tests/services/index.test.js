@@ -45,7 +45,7 @@ describe('Test services', () => {
       useUnifiedTopology: true
     });
     db = mongoose.connection;
-    mongoose.connection.dropCollection('users');
+    // mongoose.connection.dropCollection('users');
   });
   afterAll(async () => {
     await db.close();
