@@ -13,7 +13,7 @@ https://zekais-todo.herokuapp.com/
 ```
 
 ## Editing the file
-Edit the required value in folder `controllers` file `config.js`.
+Edit the required value in folder `controllers` file `settings.js`.
 
 ```js
 module.exports = {
